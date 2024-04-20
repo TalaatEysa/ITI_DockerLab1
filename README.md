@@ -53,20 +53,21 @@ docker rm 76428f97db9d
 ```
 #### 4. Check File Status
 ```bash
-file is removed
+docker ps -a
+container and file are removed
 ```
 #### 5. What happened to hello-docker file?
 ```bash
-file is deleted with container
+any changes made inside the container exists as long as the container exists.
+When the container is removed, all its changes are removed.
 ```
 #### 6. Remove All Stopped Containers
 ```bash
 docker rm 76428f97db9d
-
 ```
 #### 7. Bonus: Remove All Containers in One Command
 ```bash
-docker rm $(docker ps -aqf "status=exited")
+docker rm $(docker ps --filter status=exited -q)
 ```
 
 ---
@@ -77,15 +78,28 @@ Create a custom Docker image using Nginx and a local HTML file.
 ### Steps
 #### 1. Create a Local HTML File
 ```bash
+vi index.html
 ```
 #### 2. Write Dockerfile and Copy the HTML file to the Docker Image
 ```bash
+vi Dockerfile
 ```
-#### 3. Run Container with New Image
 ```bash
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/index.html
+```
+#### 3. Build a new Docker image from the above Dockerfile and tag it with this pattern nginx-your-name.
+```bash
+ocker build -t nginx-talaat .
+```
+#### 4. Run Container with New Image
+```bash
+docker run -d -p 8088:80 nginx-talaat
 ```
 
-#### 4. Test the Container, open your browser and navigate to http://localhost:8088 to check if everything is okay
+#### 5. Test the Container, open your browser and navigate to http://localhost:8088 to check if everything is okay
 ```bash
+ http://localhost:8088 works just fine and name in index.html is displayed
 ```
 

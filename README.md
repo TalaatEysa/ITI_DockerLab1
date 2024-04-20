@@ -91,12 +91,13 @@ COPY index.html /usr/share/nginx/html/index.html
 ```
 #### 3. Build a new Docker image from the above Dockerfile and tag it with this pattern nginx-your-name.
 ```bash
-ocker build -t nginx-talaat .
+docker build -t nginx-talaat .
 ```
 #### 4. Run Container with New Image
 ```bash
 docker run -d -p 8088:80 nginx-talaat
 ```
+![Alt Text](https://github.com/TalaatEysa/ITI_DockerLab1/blob/main/Ubuntu%2064-bit-2024-04-20-15-40-07.png)
 
 #### 5. Test the Container, open your browser and navigate to http://localhost:8088 to check if everything is okay
 ```bash

@@ -12,15 +12,21 @@ docker run hello-world
 ```
 #### 2. Check Container Status and Explain
 ```bash
+docker ps -a
+
 ```
 #### 3. Start the Stopped Container
 ```bash
+docker start 0fd82e8824de
 ```
 #### 4. Remove the Container
 ```bash
+docker rm 0fd82e8824de
 ```
 #### 5. Remove the Image
 ```bash
+docker rmi hello-world
+
 ```
 ---
 
